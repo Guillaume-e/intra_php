@@ -21,16 +21,14 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $json = curl_exec($ch);
 curl_close($ch);
 
-$data = json_decode($json);
+$data = json_decode($json, true);
 
 $str = file_get_contents('config.json');
-$model = json_decode($str);
-
-var_dump($data);
+$model = json_decode($str, true);
 
 for($i = 0; $i <= sizeof($data); $i++) 
 {
-    echo $data[$i][$model["SOMETHING"]];
-    //echo ($elem[$model["SOMETHING"]]);
+    echo $data[$i][$model["SOMETHING"]], "\n";
 }
+
 ?>
